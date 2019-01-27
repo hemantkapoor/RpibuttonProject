@@ -1,0 +1,19 @@
+Author: Hemant Kapoor
+Date: 27-January-2019
+Project: Button Monitor
+Target: Raspberry Pi B+
+
+This is the first part of implementing a linux device driver.
+
+I have connected a buton to Gpio Header 16 i.e. GPIO23.
+
+Devicetree overlay gpio-key for exposing the button.
+Please see https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/overlays/README
+
+This is done by inserting below line to /boot/config.txt and rebooting
+dtoverlay=gpio-key,gpio=23,keycode=256,label="BTN_0"
+
+The button can then be viewed at /dev/input/event#
+
+Note: I had to add user to group "input" to avoid using sudo
+usermod -a -G input hemant
